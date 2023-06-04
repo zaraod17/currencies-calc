@@ -1,0 +1,10 @@
+{
+    "name": "root/web",
+    "description": "Currencies calculator app",
+    "autoload": {
+        "psr-4": {
+            "Root\\Web\\": "src/"
+        }
+    },
+    "require": {}
+}

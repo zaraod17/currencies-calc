@@ -16,7 +16,7 @@ class DbConnection
     private $password;
 
     public function __construct()
-    {   
+    {
         $dotenv = Dotenv::createImmutable((dirname(__DIR__)));
         $dotenv->load();
 

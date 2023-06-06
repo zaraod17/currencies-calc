@@ -27,7 +27,7 @@ class CurrencyRatesRepository
         $this->connection->exec($createTableQuery);
     }
 
-    public function saveExchangeRates(array $rates)
+    public function saveExchangeRates(array $rates): void
     {
         $this->createCurrenciesTable();
 

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\DbConnection;
+use Task\Currencies\Database\DbConnection;
 
 class DatabaseConnectionTest extends TestCase
 {

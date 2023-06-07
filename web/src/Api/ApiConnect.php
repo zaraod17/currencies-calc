@@ -1,7 +1,8 @@
 <?php
 
-namespace Task\Currencies;
+declare(strict_types=1);
 
+namespace Task\Currencies\Api;
 
 class ApiConnect
 {

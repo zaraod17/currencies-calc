@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Task\Currencies;
+namespace Task\Currencies\Database;
 
 use PDO;
 use PDOException;

@@ -3,10 +3,10 @@
 namespace Task\Currencies\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\CurrencyRatesTable;
-use Task\Currencies\DbConnection;
-use Task\Currencies\CurrencyRatesRepository;
-use Task\Currencies\ApiConnect;
+use Task\Currencies\Display\CurrencyRatesTable;
+use Task\Currencies\Database\DbConnection;
+use Task\Currencies\Repository\CurrencyRatesRepository;
+use Task\Currencies\Api\ApiConnect;
 
 class CurrencyRatesTableTest extends TestCase
 {

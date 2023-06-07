@@ -1,9 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\DbConnection;
-use Task\Currencies\CurrencyRatesRepository;
-use Task\Currencies\FormHandler;
+use Task\Currencies\Database\DbConnection;
+use Task\Currencies\Repository\CurrencyRatesRepository;
+use Task\Currencies\Form\FormHandler;
 
 use PDO;
 

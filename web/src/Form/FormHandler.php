@@ -1,9 +1,12 @@
 <?php
 
-namespace Task\Currencies;
+declare(strict_types=1);
 
-use Task\Currencies\DbConnection;
-use Task\Currencies\CurrencyRatesRepository;
+
+namespace Task\Currencies\Form;
+
+use Task\Currencies\Database\DbConnection;
+use Task\Currencies\Repository\CurrencyRatesRepository;
 
 class FormHandler
 {

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\ApiConnect;
+use Task\Currencies\Api\ApiConnect;
 
 class ApiConnectTest extends TestCase
 {

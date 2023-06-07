@@ -3,7 +3,7 @@
 namespace Task\Currencies\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\ConversionList;
+use Task\Currencies\Display\ConversionList;
 
 class ConversionListTest extends TestCase
 {

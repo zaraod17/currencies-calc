@@ -1,18 +1,18 @@
 <?php
 
-namespace Task\Currencies;
+declare(strict_types=1);
 
-use Task\Currencies\CurrencyRatesRepository;
+namespace Task\Currencies\Display;
+
+use Task\Currencies\Repository\CurrencyRatesRepository;
 
 
 class ConversionList
 {
-    private $connection;
     private $currencyRatesRepository;
 
     public function __construct()
     {
-
         $this->currencyRatesRepository = new CurrencyRatesRepository();
     }
 

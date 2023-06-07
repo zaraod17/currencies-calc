@@ -1,8 +1,11 @@
 <?php
 
-namespace Task\Currencies;
+declare(strict_types=1);
 
-use Task\Currencies\DbConnection;
+
+namespace Task\Currencies\Repository;
+
+use Task\Currencies\Database\DbConnection;
 use PDO;
 
 class CurrencyRatesRepository

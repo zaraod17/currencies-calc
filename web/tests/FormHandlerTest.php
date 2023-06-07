@@ -18,7 +18,7 @@ class FormHandlerTest extends TestCase
     {
         $this->formHandler = new FormHandler();
         $this->dbConnection = new DbConnection();
-        $this->currenciesRepository = new CurrencyRatesRepository($this->dbConnection);
+        $this->currenciesRepository = new CurrencyRatesRepository();
     }
 
     protected function tearDown(): void

@@ -9,8 +9,9 @@ class CurrencyRatesRepository
 {
     private $connection;
 
-    public function __construct(DbConnection $dbConnection)
+    public function __construct()
     {
+        $dbConnection = new DbConnection();
         $this->connection = $dbConnection->connectToDatabase();
     }
 

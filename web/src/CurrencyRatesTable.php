@@ -10,10 +10,10 @@ class CurrencyRatesTable
     private $connection;
     private $currencyRatesRepository;
 
-    public function __construct(DbConnection $dbConnection)
+    public function __construct()
     {
-        $this->connection = $dbConnection;
-        $this->currencyRatesRepository = new CurrencyRatesRepository($this->connection);
+        $this->connection = new DbConnection();
+        $this->currencyRatesRepository = new CurrencyRatesRepository();
     }
 
     public function generateTables()

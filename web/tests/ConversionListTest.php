@@ -3,18 +3,15 @@
 namespace Task\Currencies\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Task\Currencies\DbConnection;
 use Task\Currencies\ConversionList;
 
 class ConversionListTest extends TestCase
 {
-    private $dbConnection;
     private $conversionList;
 
     protected function setUp(): void
     {
-        $this->dbConnection = new DbConnection();
-        $this->conversionList = new ConversionList($this->dbConnection);
+        $this->conversionList = new ConversionList();
     }
 
     public function testGenerateTables()

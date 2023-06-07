@@ -2,7 +2,6 @@
 
 namespace Task\Currencies;
 
-use Task\Currencies\DbConnection;
 use Task\Currencies\CurrencyRatesRepository;
 
 
@@ -11,10 +10,10 @@ class ConversionList
     private $connection;
     private $currencyRatesRepository;
 
-    public function __construct(DbConnection $dbConnection)
+    public function __construct()
     {
-        $this->connection = $dbConnection;
-        $this->currencyRatesRepository = new CurrencyRatesRepository($this->connection);
+
+        $this->currencyRatesRepository = new CurrencyRatesRepository();
     }
 
 

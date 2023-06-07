@@ -20,7 +20,7 @@ class CurrencyRatesRepositoryTest extends TestCase
 
         $this->apiConnection = new ApiConnect();
 
-        $this->repository = new CurrencyRatesRepository($this->dbConnection);
+        $this->repository = new CurrencyRatesRepository();
     }
 
     protected function tearDown(): void

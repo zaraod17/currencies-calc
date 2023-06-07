@@ -18,8 +18,8 @@ class CurrencyRatesTableTest extends TestCase
     protected function setUp(): void
     {
         $this->dbConnection = new DbConnection();
-        $this->table = new CurrencyRatesTable($this->dbConnection);
-        $this->dbRepository = new CurrencyRatesRepository($this->dbConnection);
+        $this->table = new CurrencyRatesTable();
+        $this->dbRepository = new CurrencyRatesRepository();
         $this->apiConnection = new ApiConnect();
     }
 

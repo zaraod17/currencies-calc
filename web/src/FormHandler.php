@@ -13,7 +13,7 @@ class FormHandler
     public function __construct()
     {
         $this->dbConnection = new DbConnection();
-        $this->dbRepository = new CurrencyRatesRepository($this->dbConnection);
+        $this->dbRepository = new CurrencyRatesRepository();
     }
     public function handleForm()
     {

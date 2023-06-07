@@ -21,11 +21,17 @@ class ConversionList
     {
         $results = $this->currencyRatesRepository->getCurrencyConversions();
 
-        foreach ($results as $result) {
-            echo 'Waluta źródłowa:' . $result['source_currency'] . '<br>';
-            echo 'Waluta docelowa:' . $result['target_currency'] . '<br>';
-            echo 'Przewalutowana kwota:' . $result['amount'] . '<br>';
-            echo "<br>";
+        if ($results) {
+            foreach ($results as $result) {
+                echo 'Waluta źródłowa:' . $result['source_currency'] . '<br>';
+                echo 'Waluta docelowa:' . $result['target_currency'] . '<br>';
+                echo 'Przewalutowana kwota:' . $result['amount'] . '<br>';
+                echo "<br>";
+            }
+        }
+
+        else {
+            echo "Brak danych.";
         }
     }
 }

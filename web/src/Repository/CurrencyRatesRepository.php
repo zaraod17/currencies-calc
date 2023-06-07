@@ -50,8 +50,19 @@ class CurrencyRatesRepository
 
         $date = date('Y-m-d');
 
-        $insertQuery = "INSERT INTO currencies (code, rate, currency , date) VALUES (:code, :rate, :currency, :date)";
-        $statement = $this->connection->prepare($insertQuery);
+        $rowCountQuery = "SELECT COUNT(*) FROM currencies";
+        $rowCountStatement = $this->connection->query($rowCountQuery);
+        $rowCount = $rowCountStatement->fetchColumn();
+
+        if ($rowCount === 0) {
+            // Table is empty, perform an insert
+            $insertQuery = "INSERT INTO currencies (code, rate, currency, date) VALUES (:code, :rate, :currency, :date)";
+            $statement = $this->connection->prepare($insertQuery);
+        } else {
+            // Table has existing rows, perform an update
+            $updateQuery = "UPDATE currencies SET rate = :rate, currency = :currency, date = :date WHERE code = :code";
+            $statement = $this->connection->prepare($updateQuery);
+        }
 
         foreach ($rates as $rate) {
             $code = $rate['code'];

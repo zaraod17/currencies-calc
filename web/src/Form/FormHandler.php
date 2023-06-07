@@ -43,20 +43,34 @@ class FormHandler
 
         foreach ($exchangeRates as $rate) {
             if ($sourceCurrency === $rate['code']) {
-
                 $sourceRate = $rate['rate'];
             } else if ($targetCurrency === $rate['code']) {
-
                 $targetRate = $rate['rate'];
             }
         }
 
-        $convertedAmount = ($amount / $sourceRate) * $targetRate;
+        if ($sourceRate === null || $targetRate === null) {
+            return null;
+        }
 
+        if ($sourceRate == 0 || $targetRate == 0) {
+            return null;
+        }
+
+        if ($sourceCurrency === $targetCurrency) {
+            return $amount;
+        }
+
+        if ($amount < 0) {
+            return null;
+        }
+
+        $convertedAmount = ($amount / $sourceRate) * $targetRate;
         $convertedAmount = round($convertedAmount, 2);
 
         return $convertedAmount;
     }
+
     public function generateSelect(string $name)
     {
 

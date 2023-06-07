@@ -21,6 +21,11 @@ class FormHandler
     public function handleForm()
     {
         $amount = $_POST['amount'];
+
+        if (!$amount || ($amount <= 0)) {
+            throw new \Exception('Amount is not valid! It must be greater that 0.');
+        }
+
         $sourceCurrency = $_POST['source_currency'];
         $targetCurrency = $_POST['target_currency'];
 

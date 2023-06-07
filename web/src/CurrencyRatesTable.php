@@ -3,23 +3,23 @@
 namespace Task\Currencies;
 
 use Task\Currencies\DbConnection;
-use PDO;
+use Task\Currencies\CurrencyRatesRepository;
 
 class CurrencyRatesTable
 {
     private $connection;
+    private $currencyRatesRepository;
 
     public function __construct(DbConnection $dbConnection)
     {
         $this->connection = $dbConnection;
+        $this->currencyRatesRepository = new CurrencyRatesRepository($this->connection);
     }
 
     public function generateTables()
     {
-        $query = "SELECT * FROM currencies ORDER BY date DESC";
-        $statement = $this->connection->connectToDatabase()->query($query);
 
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $results = $this->currencyRatesRepository->getExchangeRates();
 
         if ($results) {
             echo '<table>';

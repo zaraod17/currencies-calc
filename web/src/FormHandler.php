@@ -28,7 +28,7 @@ class FormHandler
 
     public function convertCurrency($amount, $sourceCurrency, $targetCurrency)
     {
-        $exchangeRates = $this->dbRepository->getEchangeRates();
+        $exchangeRates = $this->dbRepository->getExchangeRates();
 
         $sourceRate = null;
         $targetRate = null;
@@ -52,7 +52,7 @@ class FormHandler
     public function generateSelect(string $name)
     {
 
-        $results = $this->dbRepository->getEchangeRates();
+        $results = $this->dbRepository->getExchangeRates();
 
         echo '<select name="' . $name . '" required>';
 

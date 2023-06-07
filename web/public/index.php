@@ -20,7 +20,7 @@ $formHandler = new FormHandler();
 ?>
 
 <form method="POST">
-  Kwota: <input type="number" name="amount" required><br>
+  Kwota: <input type="number" name="amount" min="0" required><br>
   <label for="soruce_currency">
     Waluta źródłowa:
   </label> <?php

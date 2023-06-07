@@ -63,10 +63,21 @@ class CurrencyRatesRepository
         }
     }
 
-    public function getEchangeRates(): array
+    public function getExchangeRates(): array
     {
         $query = "SELECT * FROM currencies ORDER BY date DESC";
         $statement = $this->connection->query($query);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+
+    public function getCurrencyConversions()
+    {
+        $query = "SELECT * FROM conversions";
+        $statement = $this->connection->query($query);
+
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
@@ -84,6 +95,5 @@ class CurrencyRatesRepository
         $statement->bindParam(':amount', $amount);
 
         $statement->execute();
-
     }
 }

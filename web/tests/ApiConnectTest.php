@@ -14,9 +14,8 @@ class ApiConnectTest extends TestCase
 
     public function testGetExchangeRates()
     {
-        $date = '2023-06-01';
 
-        $rates = $this->apiConnect->getExchangeRates($date);
+        $rates = $this->apiConnect->getExchangeRates();
 
         $this->assertIsArray($rates);  // Ensure the returned value is an array
 

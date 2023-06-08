@@ -10,9 +10,9 @@ class ApiConnect
 {
     private $baseUrl = 'http://api.nbp.pl/api/';
 
-    public function getExchangeRates($date)
+    public function getExchangeRates()
     {
-        $url = $this->baseUrl . 'exchangerates/tables/A/' . $date . '/?format=json';
+        $url = $this->baseUrl . 'exchangerates/tables/A/' . '/?format=json';
         $response = @file_get_contents($url);
 
         if (!$response) {

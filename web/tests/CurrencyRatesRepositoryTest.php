@@ -34,9 +34,8 @@ class CurrencyRatesRepositoryTest extends TestCase
     public function testSaveExchangeRates()
     {
 
-        $date = date('Y-m-d');
 
-        $rates = $this->apiConnection->getExchangeRates($date);
+        $rates = $this->apiConnection->getExchangeRates();
 
         $this->repository->saveExchangeRates($rates);
 
@@ -49,11 +48,9 @@ class CurrencyRatesRepositoryTest extends TestCase
         foreach ($result as $rate) {
             $this->assertArrayHasKey('currency', $rate);
             $this->assertArrayHasKey('rate', $rate);
-            $this->assertArrayHasKey('date', $rate);
 
             $this->assertIsString($rate['currency']);
             $this->assertIsFloat(floatval($rate['rate']));
-            $this->assertIsString($rate['date']);
         }
     }
     public function dropCurrenciesTable()

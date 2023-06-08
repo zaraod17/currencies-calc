@@ -25,9 +25,8 @@ class CurrencyRatesTableTest extends TestCase
 
     public function testGenerateTables()
     {
-        $date = date('Y-m-d');
 
-        $rates = $this->apiConnection->getExchangeRates($date);
+        $rates = $this->apiConnection->getExchangeRates();
 
         $this->dbRepository->saveExchangeRates($rates);
 

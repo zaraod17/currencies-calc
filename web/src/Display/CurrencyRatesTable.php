@@ -25,14 +25,13 @@ class CurrencyRatesTable
 
         if ($results) {
             echo '<table>';
-            echo '<tr><th>Currency</th><th>Code</th><th>Exchange</th><th>Date</th></tr>';
+            echo '<tr><th>Currency</th><th>Code</th><th>Exchange</th></tr>';
 
             foreach ($results as $result) {
                 echo '<tr>';
                 echo '<td>' . $result['currency'] . '</td>';
                 echo '<td>' . $result['code'] . '</td>';
                 echo '<td>' . $result['rate'] . '</td>';
-                echo '<td>' . $result['date'] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';

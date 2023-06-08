@@ -14,9 +14,8 @@ $currenciesRepository = new CurrencyRatesRepository();
 $currenciesTable = new CurrencyRatesTable();
 $conversionList = new ConversionList();
 
-$date = date('Y-m-d');
 
-$rates = $api->getExchangeRates($date);
+$rates = $api->getExchangeRates();
 
 if (!$rates) {
   return;

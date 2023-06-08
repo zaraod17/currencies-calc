@@ -46,6 +46,11 @@ class CurrencyRatesRepository
 
     public function saveExchangeRates(array $rates): void
     {
+        if (!$rates) {
+            echo "Error: No rates provieded";
+            return;
+        }
+
         $this->createCurrenciesTable();
 
         $date = date('Y-m-d');

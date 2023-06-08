@@ -17,6 +17,10 @@ $conversionList = new ConversionList();
 $date = date('Y-m-d');
 
 $rates = $api->getExchangeRates($date);
+
+if (!$rates) {
+  return;
+}
 $currenciesRepository->saveExchangeRates($rates);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

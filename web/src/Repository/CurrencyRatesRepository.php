@@ -93,6 +93,8 @@ class CurrencyRatesRepository
 
     public function getCurrencyConversions()
     {
+        $this->createConversionsTable();
+
         $query = "SELECT * FROM conversions";
         $statement = $this->connection->query($query);
 

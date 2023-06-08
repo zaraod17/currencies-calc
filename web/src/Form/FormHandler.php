@@ -10,12 +10,10 @@ use Task\Currencies\Repository\CurrencyRatesRepository;
 
 class FormHandler
 {
-    private $dbConnection;
     private $dbRepository;
 
     public function __construct()
     {
-        $this->dbConnection = new DbConnection();
         $this->dbRepository = new CurrencyRatesRepository();
     }
     public function handleForm()
@@ -38,8 +36,8 @@ class FormHandler
     {
         $exchangeRates = $this->dbRepository->getExchangeRates();
 
-        $sourceRate = null;
-        $targetRate = null;
+        $sourceRate = 0;
+        $targetRate = 0;
 
         foreach ($exchangeRates as $rate) {
             if ($sourceCurrency === $rate['code']) {
@@ -49,20 +47,12 @@ class FormHandler
             }
         }
 
-        if ($sourceRate === null || $targetRate === null) {
-            return null;
-        }
-
-        if ($sourceRate == 0 || $targetRate == 0) {
-            return null;
-        }
-
         if ($sourceCurrency === $targetCurrency) {
             return $amount;
         }
 
-        if ($amount < 0) {
-            return null;
+        if ($amount <= 0) {
+            return 0;
         }
 
         $convertedAmount = ($amount / $sourceRate) * $targetRate;

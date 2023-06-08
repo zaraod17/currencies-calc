@@ -55,7 +55,7 @@ class FormHandler
             return 0;
         }
 
-        $convertedAmount = ($amount / $sourceRate) * $targetRate;
+        $convertedAmount = ($sourceRate / $targetRate) * $amount;
         $convertedAmount = round($convertedAmount, 2);
 
         return $convertedAmount;

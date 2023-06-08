@@ -5,16 +5,18 @@ declare(strict_types=1);
 
 namespace Task\Currencies\Form;
 
-use Task\Currencies\Database\DbConnection;
 use Task\Currencies\Repository\CurrencyRatesRepository;
+use Task\Currencies\Repository\ConversionRatesRepository;
 
 class FormHandler
 {
     private $dbRepository;
+    private $conversionRatesRepository;
 
     public function __construct()
     {
         $this->dbRepository = new CurrencyRatesRepository();
+        $this->conversionRatesRepository = new ConversionRatesRepository();
     }
     public function handleForm()
     {
@@ -27,39 +29,11 @@ class FormHandler
         $sourceCurrency = $_POST['source_currency'];
         $targetCurrency = $_POST['target_currency'];
 
-        $convertedAmount = $this->convertCurrency($amount, $sourceCurrency, $targetCurrency);
+        $convertedAmount = $this->conversionRatesRepository->convertCurrency($amount, $sourceCurrency, $targetCurrency);
 
-        $this->dbRepository->saveCurrencyConversion($sourceCurrency, $targetCurrency, $convertedAmount);
+        $this->conversionRatesRepository->saveCurrencyConversion($sourceCurrency, $targetCurrency, $convertedAmount);
     }
 
-    public function convertCurrency($amount, $sourceCurrency, $targetCurrency)
-    {
-        $exchangeRates = $this->dbRepository->getExchangeRates();
-
-        $sourceRate = 0;
-        $targetRate = 0;
-
-        foreach ($exchangeRates as $rate) {
-            if ($sourceCurrency === $rate['code']) {
-                $sourceRate = $rate['rate'];
-            } else if ($targetCurrency === $rate['code']) {
-                $targetRate = $rate['rate'];
-            }
-        }
-
-        if ($sourceCurrency === $targetCurrency) {
-            return $amount;
-        }
-
-        if ($amount <= 0) {
-            return 0;
-        }
-
-        $convertedAmount = ($sourceRate / $targetRate) * $amount;
-        $convertedAmount = round($convertedAmount, 2);
-
-        return $convertedAmount;
-    }
 
     public function generateSelect(string $name)
     {

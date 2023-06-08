@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Task\Currencies\Display;
 
-use Task\Currencies\Repository\CurrencyRatesRepository;
+use Task\Currencies\Repository\ConversionRatesRepository;
 
 
 class ConversionList
 {
-    private $currencyRatesRepository;
+    private $conversionRatesRepository;
 
     public function __construct()
     {
-        $this->currencyRatesRepository = new CurrencyRatesRepository();
+        $this->conversionRatesRepository = new ConversionRatesRepository();
     }
 
 
     public function generateList()
     {
-        $results = $this->currencyRatesRepository->getCurrencyConversions();
+        $results = $this->conversionRatesRepository->getCurrencyConversions();
 
         if ($results) {
             foreach ($results as $result) {

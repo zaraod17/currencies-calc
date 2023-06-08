@@ -32,17 +32,7 @@ class CurrencyRatesRepository
         $this->connection->exec($createTableQuery);
     }
 
-    public function createConversionsTable(): void
-    {
-        $createTableQuery = "CREATE TABLE IF NOT EXISTS conversions (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            source_currency VARCHAR(3) NOT NULL,
-            target_currency VARCHAR(3) NOT NULL,
-            amount DECIMAL(10, 2) NOT NULL
-        )";
 
-        $this->connection->exec($createTableQuery);
-    }
 
     public function saveExchangeRates(array $rates): void
     {
@@ -88,32 +78,5 @@ class CurrencyRatesRepository
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $results;
-    }
-
-
-    public function getCurrencyConversions()
-    {
-        $this->createConversionsTable();
-
-        $query = "SELECT * FROM conversions";
-        $statement = $this->connection->query($query);
-
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $results;
-    }
-
-    public function saveCurrencyConversion($sourceCurrency, $targetCurrency, $amount)
-    {
-        $this->createConversionsTable();
-
-        $insertQuery = "INSERT INTO conversions (source_currency, target_currency, amount) VALUES (:source_currency, :target_currency, :amount)";
-        $statement = $this->connection->prepare($insertQuery);
-
-        $statement->bindParam(':source_currency', $sourceCurrency);
-        $statement->bindParam(':target_currency', $targetCurrency);
-        $statement->bindParam(':amount', $amount);
-
-        $statement->execute();
     }
 }

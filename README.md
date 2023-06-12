@@ -1,7 +1,7 @@
 # currencies-calc
 Recruitment task for adrespect
 
-This is Curririences caluculator app written in php. This app allows to fetch data from api: http://api.nbp.pl/ and save it into database. 
+This is Currencies calculator app written in php. This app allows to fetch data from api: http://api.nbp.pl/ and save it into database. 
 It displays currency rates in table. There is also form for currency conversions which are saved into database and displayed as list.
 
 Stack: 
